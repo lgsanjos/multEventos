@@ -1,59 +1,32 @@
 package interector;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import negocio.Usuario;
-import negocio.Usuarios;
 import servidor.Conexao;
 import Persistencia.Persistencia;
 import Persistencia.Tabela;
 
 public class ConsultarUsuarios {
 	
-	public Usuarios requisitar() {
+	public static LinkedList<String> requisitar() {
 		String resposta;
-		resposta = Conexao.getInstancia().broadCast(Acoes.consultarNomes);
+		resposta = Conexao.getInstancia().broadCast(Acoes.CONSULTAR_NOME);
 		
-		InputStream inputStream;  
-		ObjectInputStream objectInput;  
-		Usuarios usuarios = null;  
-	      try {  
-	         inputStream = new FileInputStream(resposta);  
-	         objectInput = new ObjectInputStream(inputStream);  
-	         usuarios =  (Usuarios) objectInput.readObject();  
-	         return usuarios;  
-	           
-	      } catch (Exception e) {  
-	         e.printStackTrace();
-	      }  
-	      return null;  		
-		
+		List<String> lista = Arrays.asList(resposta.split("\\s*,\\s*"));
+		return new LinkedList<String>(lista);
 	}
 	
-	public String responder() {
+	public static String responder() {
 		Tabela tabela = Persistencia.getInstancia().procuraTabela(Usuario.nomeTabela);
-		LinkedList<?> usuarios = tabela.todos();
 		
-	      FileOutputStream outputStream;
-	      ObjectOutputStream objectOutput;  
-	      String reposta = new String();
-	      
-	      for (Object usuario : usuarios) {
-		      try {  
-		         outputStream = new FileOutputStream("");
-		         objectOutput = new ObjectOutputStream( outputStream);  
-		         objectOutput.writeObject((Usuario) usuarios);  
-		      } catch (IOException e) {  
-		         e.printStackTrace();  
-		      }
-	      }   
-	      
+		String resposta = new String();
+		for (Object usuario : tabela.todos()) {
+			resposta.concat( ((Usuario) usuario).getNome() + ",");
+		}
+		
 		return resposta;
 	}	
 }

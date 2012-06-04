@@ -2,6 +2,8 @@ package interector;
 
 public enum Acoes {
 	
-	consultarNomes
+	CONSULTAR_NOME,
+	NOTIFICAR_EVENTO,
+	CONFIRMAR_NOTIFICACAO
 
 }

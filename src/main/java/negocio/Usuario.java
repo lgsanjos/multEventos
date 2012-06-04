@@ -1,16 +1,13 @@
 package negocio;
 
 
-import java.io.Serializable;
 import java.util.LinkedList;
-
 import Persistencia.CheckParamException;
 import Persistencia.Entidade;
 import Persistencia.Persistencia;
 
-public class Usuario extends Entidade implements Serializable {
+public class Usuario extends Entidade {
 
-	private static final long serialVersionUID = -8048041001844132328L;
 	private String nome;
 	private Contatos contatos;
 	public static String nomeTabela = "Usuario";
@@ -40,5 +37,9 @@ public class Usuario extends Entidade implements Serializable {
 	public boolean equals(Object usuario) {
 		return this.nome.equalsIgnoreCase(((Usuario) usuario).getNome());
 	}
-
+	
+	public String toString() {
+		return this.getNome();
+	}
+	
 }

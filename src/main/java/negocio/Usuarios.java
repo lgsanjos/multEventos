@@ -1,11 +1,17 @@
 package negocio;
 
-import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Usuarios extends LinkedList<Usuario> implements Serializable {
-
-	private static final long serialVersionUID = 1095072947907228786L;
-
+public class Usuarios extends LinkedList<Usuario> {
+	
+	public String toString() {
+		
+		String retorno = new String();
+		for (Usuario usuario : this) {
+			retorno.concat(usuario.getNome() + "\n");
+		}
+		
+		return retorno;
+	}
 
 }

@@ -16,5 +16,13 @@ public class Conexao {
 	public String broadCast(Acoes acao) {
 		return  "";
 	}
+	
+	public String broadCast(Acoes acao, String parametros) {
+		return  "";
+	}
+	
+	public String sendTo(String destinatario, Acoes acao, String parametros) {
+		return "";
+	}
 
 }

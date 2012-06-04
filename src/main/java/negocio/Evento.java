@@ -8,7 +8,7 @@ import Persistencia.Entidade;
 
 public class Evento extends Entidade {
 	
-	private LinkedList<Usuario> grupo;
+	private LinkedList<String> grupo;
 	private Usuario criador;
 	private Date dataInicio;
 	private Date dataFim;
@@ -17,7 +17,7 @@ public class Evento extends Entidade {
 	private boolean notificado;
 	
 	public Evento(Usuario criador, String titulo, Date dataInicio, Date dataFim) {
-		this.grupo = new LinkedList<Usuario>();
+		this.grupo = new LinkedList<String>();
 		this.confirmado = false;
 		this.notificado = false;
 		this.titulo = titulo;
@@ -26,7 +26,7 @@ public class Evento extends Entidade {
 		this.criador = criador;
 	}
 	
-	public LinkedList<Usuario> getGrupo() {
+	public LinkedList<String> getGrupo() {
 		return grupo;
 	}
 
