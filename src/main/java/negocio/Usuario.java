@@ -2,9 +2,10 @@ package negocio;
 
 
 import java.util.LinkedList;
-import Persistencia.CheckParamException;
-import Persistencia.Entidade;
-import Persistencia.Persistencia;
+
+import persistencia.CheckParamException;
+import persistencia.Entidade;
+import persistencia.Persistencia;
 
 public class Usuario extends Entidade {
 
@@ -13,6 +14,7 @@ public class Usuario extends Entidade {
 	public static String nomeTabela = "Usuario";
 	
 	public Usuario(String nome) {
+		super();
 		this.nome = nome;
 		this.contatos = new Contatos();
 	}

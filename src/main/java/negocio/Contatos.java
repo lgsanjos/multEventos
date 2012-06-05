@@ -1,7 +1,7 @@
 package negocio;
 
-import Persistencia.CheckParamException;
-import Persistencia.Entidade;
+import persistencia.CheckParamException;
+import persistencia.Entidade;
 
 public class Contatos extends Entidade {
 	

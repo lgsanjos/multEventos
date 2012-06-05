@@ -1,4 +1,4 @@
-package Persistencia;
+package persistencia;
 
 
 public abstract class Entidade {
@@ -17,6 +17,7 @@ public abstract class Entidade {
 
 	public Entidade() {
 		this.id = 0; 
+		this.tabela = null;
 	}
 	
 	private void criaTabela() {
@@ -39,7 +40,7 @@ public abstract class Entidade {
 	
 			Entidade elemento;
 			elemento = Persistencia.getInstancia().procuraElementoNaTabela(this.getNomeTabela(), this.id);
-			if (this.equals(elemento)) {
+			if (elemento != null && this.equals(elemento)) {
 				elemento.remover();
 			}
 	

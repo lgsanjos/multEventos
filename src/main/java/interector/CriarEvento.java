@@ -2,10 +2,11 @@ package interector;
 
 import java.util.Date;
 
+import persistencia.CheckParamException;
+
 import negocio.Evento;
 import negocio.Usuario;
 import servidor.Conexao;
-import Persistencia.CheckParamException;
 
 public class CriarEvento {
 

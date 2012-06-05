@@ -3,8 +3,9 @@ package negocio;
 import java.util.Date;
 import java.util.LinkedList;
 
-import Persistencia.CheckParamException;
-import Persistencia.Entidade;
+import persistencia.CheckParamException;
+import persistencia.Entidade;
+
 
 public class Evento extends Entidade {
 	

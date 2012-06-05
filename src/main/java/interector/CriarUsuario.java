@@ -1,6 +1,6 @@
 package interector;
 
-import Persistencia.CheckParamException;
+import persistencia.CheckParamException;
 import negocio.Usuario;
 
 public class CriarUsuario {

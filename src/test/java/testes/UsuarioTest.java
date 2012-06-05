@@ -3,11 +3,11 @@ package testes;
 import java.util.LinkedList;
 
 import junit.framework.TestCase;
+
 import negocio.Usuario;
-import Persistencia.CheckParamException;
-import Persistencia.Entidade;
-import Persistencia.Persistencia;
-import Persistencia.Tabela;
+import persistencia.CheckParamException;
+import persistencia.Persistencia;
+import persistencia.Tabela;
 
 public class UsuarioTest extends TestCase {
 	
@@ -37,7 +37,7 @@ public class UsuarioTest extends TestCase {
 			fail(e.getMessage());
 		}
 		
-		LinkedList<Entidade> todos = Usuario.todos();
+		LinkedList<?> todos = Usuario.todos();
 		assertEquals(1, todos.size());
 		assertEquals("usuario de teste", ((Usuario) todos.getFirst()).getNome());
 	}
@@ -51,7 +51,8 @@ public class UsuarioTest extends TestCase {
 			fail(e.getMessage());
 		}
 		
-		LinkedList<Entidade> todos = Usuario.todos();
+		LinkedList<?> todos = Usuario.todos();
 		assertEquals(3, todos.size());
 	}
+	
 }

@@ -4,10 +4,11 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import persistencia.Persistencia;
+import persistencia.Tabela;
+
 import negocio.Usuario;
 import servidor.Conexao;
-import Persistencia.Persistencia;
-import Persistencia.Tabela;
 
 public class ConsultarUsuarios {
 	
