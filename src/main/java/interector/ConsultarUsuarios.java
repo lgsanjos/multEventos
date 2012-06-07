@@ -1,22 +1,28 @@
 package interector;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import negocio.Usuario;
 import persistencia.Persistencia;
 import persistencia.Tabela;
-
-import negocio.Usuario;
-import servidor.Conexao;
+import servidor.ClientesManager;
 
 public class ConsultarUsuarios {
 	
 	public static LinkedList<String> requisitar() {
 		String resposta;
-		resposta = Conexao.getInstancia().broadCast(Acoes.CONSULTAR_NOME);
+		resposta = ""; ClientesManager.getInstance().broadcast(Acoes.CONSULTAR_NOME.toString());
 		
-		List<String> lista = Arrays.asList(resposta.split("\\s*,\\s*"));
+		List<String> lista = new ArrayList<String>();
+		if (! resposta.isEmpty())
+			lista.addAll(Arrays.asList(resposta.split("\\s*,\\s*")));
+		
+		for (Object usuario : Usuario.todos())
+			lista.add( ((Usuario) usuario).getNome());
+		
 		return new LinkedList<String>(lista);
 	}
 	

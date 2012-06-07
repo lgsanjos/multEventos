@@ -6,13 +6,14 @@ import java.util.LinkedList;
 import persistencia.CheckParamException;
 import persistencia.Entidade;
 import persistencia.Persistencia;
+import persistencia.Tabela;
 
 public class Usuario extends Entidade {
 
 	private String nome;
 	private Contatos contatos;
 	public static String nomeTabela = "Usuario";
-	
+
 	public Usuario(String nome) {
 		super();
 		this.nome = nome;
@@ -28,12 +29,14 @@ public class Usuario extends Entidade {
 	}
 	
 	public static LinkedList<?> todos() {
-		return Persistencia.getInstancia().procuraTabela(nomeTabela).todos();
+		Tabela tabela = Persistencia.getInstancia().procuraTabela(nomeTabela);
+		if (tabela == null)
+			return new LinkedList<Object>();
+		return tabela.todos();
 	}
 	
 	@Override
 	protected void testaConsistencia() throws CheckParamException {
-		//TODO: verificar nome duplicado
 	}
 	
 	public boolean equals(Object usuario) {

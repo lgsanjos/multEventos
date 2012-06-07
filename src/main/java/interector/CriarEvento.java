@@ -2,11 +2,9 @@ package interector;
 
 import java.util.Date;
 
-import persistencia.CheckParamException;
-
 import negocio.Evento;
 import negocio.Usuario;
-import servidor.Conexao;
+import persistencia.CheckParamException;
 
 public class CriarEvento {
 
@@ -35,12 +33,12 @@ public class CriarEvento {
 		par.concat("DataFim=" + evento.getDataFim().toString() + "&");
 		
 		for (String nome : evento.getGrupo()) {
-			Conexao.getInstancia().sendTo(nome, Acoes.NOTIFICAR_EVENTO, par);
+			//ClientesManager.getInstance().enviarMensagem((nome, Acoes.NOTIFICAR_EVENTO, par);
 		}	
 	}
 	
 	public static String confirmarNotificacao(String nomeCriador) {
-		return Conexao.getInstancia().sendTo(nomeCriador, Acoes.CONFIRMAR_NOTIFICACAO, "");
+		return "";//Conexao.getInstancia().sendTo(nomeCriador, Acoes.CONFIRMAR_NOTIFICACAO, "");
 	}
 		
 }
