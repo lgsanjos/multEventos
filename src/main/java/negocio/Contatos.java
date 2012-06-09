@@ -1,27 +1,27 @@
 package negocio;
 
-import persistencia.CheckParamException;
-import persistencia.Entidade;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Contatos extends Entidade {
+public class Contatos {
 	
-	private Usuarios usuarios;
+	private LinkedList<String> usuarios;
 	
 	public Contatos() {
-		usuarios = new Usuarios();
+		usuarios = new LinkedList<String>();
 	}
 	
-	public boolean addContato(Usuario usuario) {
-		return usuarios.add(usuario);
+	public boolean addContato(String nomeUsuario) {
+		return usuarios.add(nomeUsuario);
 	}
 	
-	public boolean removeContato(Usuario usuario) {
-		return usuarios.remove(usuario);
+	public boolean removeContato(String nomeUsuario) {
+		return usuarios.remove(nomeUsuario);
 	}
 	
-	@Override
-	protected void testaConsistencia() throws CheckParamException {
-
+	public List<String> asList() {
+		return new ArrayList<String>(usuarios);
 	}
-
+	
 }

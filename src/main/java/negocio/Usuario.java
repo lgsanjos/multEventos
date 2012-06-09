@@ -28,11 +28,26 @@ public class Usuario extends Entidade {
 		return this.contatos;
 	}
 	
+	public boolean adicionaContato(String nomeUsuario) {
+		return contatos.addContato(nomeUsuario);
+	}
+	
 	public static LinkedList<?> todos() {
 		Tabela tabela = Persistencia.getInstancia().procuraTabela(nomeTabela);
 		if (tabela == null)
 			return new LinkedList<Object>();
 		return tabela.todos();
+	}
+	
+	public static Usuario pesquisaNome(String nome) {
+		
+		for (Object usr : todos()) {
+			if ( ((Usuario)usr).getNome().equalsIgnoreCase(nome)) {
+				return (Usuario) usr;
+			}
+		}
+		
+		return null;
 	}
 	
 	@Override
